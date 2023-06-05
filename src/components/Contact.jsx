@@ -7,7 +7,7 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import Modal from './Modal';
-import Recaptcha from './ReCaptcha';
+import Recaptcha from './Recaptcha';
 
 const Contact = () => {
   const formRef = useRef();
