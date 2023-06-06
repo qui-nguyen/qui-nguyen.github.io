@@ -1,12 +1,13 @@
-import React from "react";
-import { Tilt } from 'react-tilt';
-import { motion } from "framer-motion";
+import React from 'react';
+import Tilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
+import { useMediaQuery } from 'react-responsive';
 
-import styles from "../styles";
-import { link } from "../assets";
-import { SectionWrapper } from "../hoc";
-import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import styles from '../styles';
+import { link } from '../assets';
+import { SectionWrapper } from '../hoc';
+import { projects } from '../constants';
+import { fadeIn, textVariant } from '../utils/motion';
 
 const ProjectCard = ({
   index,
@@ -15,16 +16,20 @@ const ProjectCard = ({
   tags,
   image,
   source_code_link,
+  isMobile
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+    <motion.div
+      variants={fadeIn('up', 'spring', index * 0.5, 0.75)}
+      animate={isMobile ? { opacity: 1 } : {}}
+    >
       <Tilt
         options={{
           max: 45,
           scale: 1,
           speed: 450,
         }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full min-h-[600px]'
+        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full sm:min-h-[600px]'
       >
         <div className='relative w-full h-[230px]'>
           <img
@@ -35,7 +40,7 @@ const ProjectCard = ({
 
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
             <div
-              onClick={() => window.open(source_code_link, "_blank")}
+              onClick={() => window.open(source_code_link, '_blank')}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
               <img
@@ -68,32 +73,40 @@ const ProjectCard = ({
 };
 
 const Works = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
   return (
     <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} `}>Mes projets</p>
-        <h2 className={`${styles.sectionHeadText}`}>Projets</h2>
+      <motion.div
+        variants={textVariant(1)}
+        animate={isMobile ? { opacity: 1 } : {}}
+      >
+        <p className={styles.sectionSubText}>Mes projets</p>
+        <h2 className={styles.sectionHeadText}>Projets</h2>
       </motion.div>
 
       <div className='w-full flex'>
         <motion.p
-          variants={fadeIn("", "", 0.1, 1)}
+          variants={fadeIn('', '', 0.1, 0.1)}
+          animate={isMobile ? { opacity: 1 } : {}}
           className='mt-3 text-secondary text-[17px] max-w-3xl leading-[30px]'
         >
-          Dans cette section, vous trouverez une sélection de mes projets où j'ai pu mettre en pratique mes compétences en développement Front-End avec React.
-          Chaque projet est le fruit d'un travail passionné et démontre ma capacité à concevoir des interfaces utilisateur interactives, à gérer l'état de manière efficace et à créer des composants réutilisables.
-          J'ai également travaillé sur des projets collaboratifs, ce qui m'a permis d'améliorer mes compétences en matière de travail d'équipe et de gestion de projet.
-          N'hésitez pas à explorer ces exemples pour mieux apprécier mon savoir-faire et ma créativité dans le domaine du développement Front-End avec React.
+          Dans cette section, vous trouverez une sélection de mes projets où
+          j'ai pu mettre en pratique mes compétences en développement Front-End avec React.
+          Chaque projet est le fruit d'un travail passionné et démontre ma capacité à concevoir
+          des interfaces utilisateur interactives, à gérer l'état de manière efficace et à créer
+          des composants réutilisables. J'ai également travaillé sur des projets collaboratifs,
+          ce qui m'a permis d'améliorer mes compétences en matière de travail d'équipe et de gestion de projet.
+          N'hésitez pas à explorer ces exemples pour mieux apprécier mon savoir-faire
+          et ma créativité dans le domaine du développement Front-End avec React.
         </motion.p>
       </div>
-
       <div className='mt-20 flex flex-wrap gap-7'>
         {projects.map((project, index) => (
-          <ProjectCard key={`project-${index}`} index={index} {...project} />
+          <ProjectCard key={`project-${index}`} index={index} isMobile={isMobile} {...project} />
         ))}
       </div>
     </>
   );
 };
 
-export default SectionWrapper(Works, "");
+export default SectionWrapper(Works, 'projets');

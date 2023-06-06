@@ -3,8 +3,9 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
 
 import CanvasLoader from "../Loader";
+import { useMediaQuery } from "react-responsive";
 
-const Computers = ({ isMobile }) => {
+const Computers = ({ isMobile, isTabletVertical }) => {
   // const computer = useGLTF("./desktop_pc/scene.gltf");
   const computer = useGLTF("./coffeemat/scene.gltf");
 
@@ -25,8 +26,13 @@ const Computers = ({ isMobile }) => {
       <pointLight intensity={1} />
       <primitive
         object={computer.scene}
-        scale={isMobile ? 0.5 : 0.6}
-        position={isMobile ? [0, -120, -2.2] : [0, -120, -1.5]}
+        scale={isTabletVertical ? 0.5 : 0.6}
+        position={isMobile
+          ? [0, -160, -2.2]
+          : (isTabletVertical
+            ? [0, -120, -2.2]
+            : [0, -120, -1.5])
+        }
       // scale={isMobile ? 0.005 : 0.01}
       // position={isMobile ? [0, -3, -2.2] : [0, -3.25, -1.5]}
       // rotation={[-0.01, -0.2, -0.1]}
@@ -36,30 +42,8 @@ const Computers = ({ isMobile }) => {
 };
 
 const ComputersCanvas = () => {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    // Add a listener for changes to the screen size
-    // const mediaQuery = window.matchMedia("(max-width: 500px)");
-    const mediaQuery = window.matchMedia("(max-width: 820px)");
-
-
-    // Set the initial value of the `isMobile` state variable
-    setIsMobile(mediaQuery.matches);
-
-    // Define a callback function to handle changes to the media query
-    const handleMediaQueryChange = (event) => {
-      setIsMobile(event.matches);
-    };
-
-    // Add the callback function as a listener for changes to the media query
-    mediaQuery.addEventListener("change", handleMediaQueryChange);
-
-    // Remove the listener when the component is unmounted
-    return () => {
-      mediaQuery.removeEventListener("change", handleMediaQueryChange);
-    };
-  }, []);
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
+  const isTabletVertical = useMediaQuery({ query: '(max-width: 820px)' });
 
   return (
     <Canvas
@@ -77,7 +61,7 @@ const ComputersCanvas = () => {
           maxPolarAngle={Math.PI / 3}
           minPolarAngle={Math.PI / 3}
         />
-        <Computers isMobile={isMobile} />
+        <Computers isMobile={isMobile} isTabletVertical={isTabletVertical} />
       </Suspense>
 
       <Preload all />
