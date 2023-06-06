@@ -7,7 +7,7 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import Modal from './Modal';
-import Recaptcha from './Recaptcha';
+// import Recaptcha from './Recaptcha';
 
 const Contact = () => {
   const formRef = useRef();
@@ -22,14 +22,14 @@ const Contact = () => {
   const [messageName, setMessageName] = useState(null);
 
 
-  const [tokenRecaptcha, setTokenRecaptcha] = useState(null);
-  const [resetRecaptcha, setResetRecaptcha] = useState(false);
+  // const [tokenRecaptcha, setTokenRecaptcha] = useState(null);
+  // const [resetRecaptcha, setResetRecaptcha] = useState(false);
 
-  const handlerCheckRecaptcha = (token) => {
-    if (token) {
-      setTokenRecaptcha(token);
-    };
-  };
+  // const handlerCheckRecaptcha = (token) => {
+  //   if (token) {
+  //     setTokenRecaptcha(token);
+  //   };
+  // };
 
   const handleChange = (e) => {
     const { target } = e;
@@ -43,61 +43,61 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(tokenRecaptcha);
-    if (tokenRecaptcha) {
-      setLoading(true);
+    // if (tokenRecaptcha) {
+    setLoading(true);
 
-      if (import.meta.env.VITE_APP_EMAILJS_SERVICE_ID && import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID && import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY) {
-        emailjs
-          .send(
-            import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-            import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-            {
-              from_name: form.name,
-              to_name: 'Thanh Qui',
-              from_email: form.email,
-              message: form.message,
-            },
-            import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-          )
-          .then(
-            () => {
-              setLoading(false);
-              setSuccess(true);
-              setMessageName('success');
+    if (import.meta.env.VITE_APP_EMAILJS_SERVICE_ID && import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID && import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY) {
+      emailjs
+        .send(
+          import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
+          import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
+          {
+            from_name: form.name,
+            to_name: 'Thanh Qui',
+            from_email: form.email,
+            message: form.message,
+          },
+          import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
+        )
+        .then(
+          () => {
+            setLoading(false);
+            setSuccess(true);
+            setMessageName('success');
 
-              setTimeout(() => {
-                setSuccess(null);
-              }, 3000);
+            setTimeout(() => {
+              setSuccess(null);
+            }, 3000);
 
-              setResetRecaptcha(true);
-              setTokenRecaptcha(null);
+            // setResetRecaptcha(true);
+            // setTokenRecaptcha(null);
 
-              setForm({
-                name: '',
-                email: '',
-                message: '',
-              });
-            },
-            (error) => {
-              setLoading(false);
-              setSuccess(false);
-              setMessageName('error');
+            setForm({
+              name: '',
+              email: '',
+              message: '',
+            });
+          },
+          (error) => {
+            setLoading(false);
+            setSuccess(false);
+            setMessageName('error');
 
-              console.error('error : ', error);
-            }
-          );
-      }
-      else {
-        setLoading(false);
-        setSuccess(false);
-        setMessageName('error');
-      }
-    } else {
-      setSuccess(false);
-      setMessageName('recaptcha');
+            console.error('error : ', error);
+          }
+        );
     }
-  };
+    else {
+      setLoading(false);
+      setSuccess(false);
+      setMessageName('error');
+    }
+  }
+  // else {
+  //   setSuccess(false);
+  //   setMessageName('recaptcha');
+  // }
+  // };
 
   const closeModal = () => {
     setSuccess(null);
@@ -165,10 +165,10 @@ const Contact = () => {
             />
           </label>
 
-          <Recaptcha
+          {/* <Recaptcha
             reset={resetRecaptcha}
             handlerCheckRecaptcha={handlerCheckRecaptcha}
-          />
+          /> */}
 
           <button
             type='submit'
