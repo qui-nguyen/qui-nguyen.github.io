@@ -4,8 +4,11 @@ import styles from "../styles";
 import { ComputersCanvas } from "./canvas";
 import { expand } from "../assets";
 
+import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
+
   return (
     <section className='relative w-full h-screen mx-auto'>
 
@@ -29,7 +32,7 @@ const Hero = () => {
       <ComputersCanvas />
 
       {/* <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'> */}
-      <div className='absolute bottom-2 w-full flex justify-center items-center'>
+      <div className={`absolute w-full flex justify-center items-center ${isMobile ? 'bottom-[70px]' : 'bottom-2'} `}>
         <a href='#presentation'>
           {/* <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'> */}
           <motion.div
