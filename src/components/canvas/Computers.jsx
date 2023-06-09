@@ -43,42 +43,30 @@ const ComputersCanvas = () => {
   const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
   const isTabletVertical = useMediaQuery({ query: '(max-width: 820px)' });
 
-  const isChrome = window?.navigator?.userAgentData.brands.find(b => b.brand.includes('Chrome'));
+  if (isMobile) { return <></>; }
 
-  if (window?.navigator?.userAgentData.platform === 'Android') {
-    // const computer = useGLTF("./desktop_pc/scene.gltf");
+  return (
+    <Canvas
+      frameloop='demand'
+      shadows
+      dpr={[1, 2]}
+      // camera={{ position: [20, 3, 5], fov: 25 }}
+      camera={{ position: [850, 200, 5], fov: 25 }}
+      gl={{ preserveDrawingBuffer: true }}
+    >
+      <Suspense fallback={<CanvasLoader />}>
+        <OrbitControls
+          autoRotate={true}
+          enableZoom={false}
+          maxPolarAngle={Math.PI / 3}
+          minPolarAngle={Math.PI / 3}
+        />
+        <Computers isMobile={isMobile} isTabletVertical={isTabletVertical} />
+      </Suspense>
 
-    // console.log("agent is:", window?.navigator?.userAgent)
-
-    // console.log("platform is: ", window?.navigator?.platform)
-
-    // console.log(window?.navigator?.userAgentData)
-    return <></>;
-  } else {
-
-    return (
-      <Canvas
-        frameloop='demand'
-        shadows
-        dpr={[1, 2]}
-        // camera={{ position: [20, 3, 5], fov: 25 }}
-        camera={{ position: [850, 200, 5], fov: 25 }}
-        gl={{ preserveDrawingBuffer: true }}
-      >
-        <Suspense fallback={<CanvasLoader />}>
-          <OrbitControls
-            autoRotate={true}
-            enableZoom={false}
-            maxPolarAngle={Math.PI / 3}
-            minPolarAngle={Math.PI / 3}
-          />
-          <Computers isMobile={isMobile} isTabletVertical={isTabletVertical} />
-        </Suspense>
-
-        <Preload all />
-      </Canvas>
-    );
-  }
+      <Preload all />
+    </Canvas>
+  );
 };
 
 export default ComputersCanvas;
