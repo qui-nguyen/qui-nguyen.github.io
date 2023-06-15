@@ -1,10 +1,15 @@
 import React from 'react';
-import {Tilt} from 'react-tilt';
+import { Tilt } from 'react-tilt';
 import { motion } from 'framer-motion';
 import styles from '../styles';
 import { services } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 import { SectionWrapper } from '../hoc/index';
+
+interface ServiceCardProps {
+  title: string,
+  icon: string,
+}
 
 const ServiceCard = ({ title, index, icon }) => {
   return (
@@ -14,7 +19,7 @@ const ServiceCard = ({ title, index, icon }) => {
         className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
       >
         <div
-          options={{
+          data-options={{
             max: 45,
             scale: 1,
             speed: 450,
@@ -37,12 +42,11 @@ const ServiceCard = ({ title, index, icon }) => {
 }
 
 
-
 const About = () => {
   return (
     <>
       <motion.div variants={textVariant()}>
-        <p className={styles.sectionSubText}>Introduction</p>
+        <p className={styles.sectionSubText}>Bienvenue dans mon univers</p>
         <h2 className={styles.sectionHeadText}>Présentation</h2>
       </motion.div>
 
@@ -55,7 +59,7 @@ const About = () => {
       </motion.p>
 
       <div className='mt-20 flex flex-wrap gap-10'>
-        {services.map((service, index) => (
+        {services.map((service: ServiceCardProps, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>

@@ -1,14 +1,14 @@
-import { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 
 const Recaptcha = ({ reset, handlerCheckRecaptcha }) => {
 
     // Recaptcha
-    const reRef = useRef(null);
+    const reRef = useRef<ReCAPTCHA>(null);
 
     // Check recaptcha
-    const onChange = (value) => {
-        handlerCheckRecaptcha(value);
+    const onChange = (value: string | null) => {
+        value && handlerCheckRecaptcha(value);
     };
 
     useEffect(() => {

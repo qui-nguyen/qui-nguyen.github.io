@@ -55,18 +55,6 @@ const services = [
 ];
 
 const technologies = [
-  // {
-  //   name: "HTML 5",
-  //   icon: html,
-  // },
-  // {
-  //   name: "CSS 3",
-  //   icon: css,
-  // },
-  // {
-  //   name: "JavaScript",
-  //   icon: javascript,
-  // },
   {
     name: "TypeScript",
     icon: typescript,
@@ -75,10 +63,6 @@ const technologies = [
     name: "React JS",
     icon: reactjs,
   },
-  // {
-  //   name: "Redux Toolkit",
-  //   icon: redux,
-  // },
   {
     name: "Tailwind CSS",
     icon: tailwind,
@@ -91,24 +75,16 @@ const technologies = [
     name: "MongoDB",
     icon: mongodb,
   },
-  // // {
-  // //   name: "Three JS",
-  // //   icon: threejs,
-  // // },
   {
     name: "git",
     icon: git,
   },
-  // // {
-  // //   name: "figma",
-  // //   icon: figma,
-  // // }
 ];
 
 const experiences = [
   {
     title: "Dévelopeuse Full-Stack JS",
-    company_name: "Freelance",
+    companyName: "Freelance",
     icon: logo,
     iconBg: "#dfdfdf",
     date: "Septembre 2022 - Aujourd'hui",
@@ -116,7 +92,7 @@ const experiences = [
   },
   {
     title: "Dévelopeuse Front-end",
-    company_name: "Kodkodkod.Studio",
+    companyName: "Kodkodkod.Studio",
     icon: kod,
     iconBg: "#dfdfdf",
     date: "Septembre 2022 - Mars 2023",
@@ -128,7 +104,7 @@ const experiences = [
   },
   {
     title: "Teacher Assistant",
-    company_name: "La Capsule",
+    companyName: "La Capsule",
     icon: lacapsule,
     iconBg: "#E6DEDD",
     date: "Octobre 2022 - Novembre 2022",
@@ -189,7 +165,7 @@ const projects = [
       }
     ],
     image: korinySite,
-    source_code_link: "https://koriny.com/en",
+    sourceCodeLink: "https://koriny.com/en",
   },
   {
     name: "Kod Studio",
@@ -210,10 +186,10 @@ const projects = [
       },
     ],
     image: kodSite,
-    source_code_link: "https://kodkodkod.studio/fr",
+    sourceCodeLink: "https://kodkodkod.studio/fr",
   },
   {
-    name: "Invoice Generator",
+    name: "Invoice Generator (en cours)",
     description:
       "Application permet de créer facilement des factures professionnelles et de les exporter au format PDF. Cette application propose des différents templates et offre des fonctionnalités telles que l'ajout d'articles avec calculs automatiques, et une interface utilisateur conviviale.",
     tags: [
@@ -231,7 +207,7 @@ const projects = [
       },
     ],
     image: invoiceSite,
-    source_code_link: "https://invoicenator.netlify.app/",
+    sourceCodeLink: "https://invoicenator.netlify.app/",
   },
   {
     name: "Qui&Anh",
@@ -256,7 +232,7 @@ const projects = [
       }
     ],
     image: weddingApp,
-    source_code_link: "https://quianh.netlify.app/",
+    sourceCodeLink: "https://quianh.netlify.app/",
   },
   {
     name: "everybuddy",
@@ -281,7 +257,7 @@ const projects = [
       }
     ],
     image: everybuddyApp,
-    source_code_link: "https://github.com/qui-nguyen",
+    sourceCodeLink: "https://github.com/qui-nguyen",
   },
 ];
 

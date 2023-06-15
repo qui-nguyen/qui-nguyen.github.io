@@ -10,16 +10,16 @@ import Modal from './Modal';
 // import Recaptcha from './Recaptcha';
 
 const Contact = () => {
-  const formRef = useRef();
+  const formRef = useRef(HTMLFormElement);
   const [form, setForm] = useState({
     name: '',
     email: '',
     message: '',
   });
 
-  const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(null);
-  const [messageName, setMessageName] = useState(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [success, setSuccess] = useState<boolean | null>(null);
+  const [messageName, setMessageName] = useState<string | null>(null);
 
 
   // const [tokenRecaptcha, setTokenRecaptcha] = useState(null);
@@ -31,7 +31,7 @@ const Contact = () => {
   //   };
   // };
 
-  const handleChange = (e) => {
+  const handleChange = (e: any) => {
     const { target } = e;
     const { name, value } = target;
 
@@ -124,7 +124,7 @@ const Contact = () => {
         <h3 className={styles.sectionHeadText}>Contact</h3>
 
         <form
-          ref={formRef}
+          data-ref={formRef}
           onSubmit={handleSubmit}
           className='mt-12 flex flex-col gap-8'
         >
