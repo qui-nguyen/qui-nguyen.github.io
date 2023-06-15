@@ -6,4 +6,4 @@ const Feedbacks = () => {
   )
 }
 
-export default Feedbacks
+export default Feedbacks;

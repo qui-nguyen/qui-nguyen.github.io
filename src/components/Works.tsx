@@ -9,13 +9,28 @@ import { SectionWrapper } from '../hoc';
 import { projects } from '../constants';
 import { fadeIn, textVariant } from '../utils/motion';
 
+interface TagsProps {
+  name: string,
+  color: string
+}
+
+interface ProjectCardProps {
+  name: string,
+  description: string,
+  tags: TagsProps[] | [],
+  image: string,
+  sourceCodeLink: string,
+  index?: number,
+  isMobile?: boolean
+}
+
 const ProjectCard = ({
   index,
   name,
   description,
   tags,
   image,
-  source_code_link,
+  sourceCodeLink,
   isMobile
 }) => {
   return (
@@ -40,7 +55,7 @@ const ProjectCard = ({
 
           <div className='absolute inset-0 flex justify-end m-3 card-img_hover'>
             <div
-              onClick={() => window.open(source_code_link, '_blank')}
+              onClick={() => window.open(sourceCodeLink, '_blank')}
               className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
             >
               <img
@@ -58,7 +73,7 @@ const ProjectCard = ({
         </div>
 
         <div className='mt-4 flex flex-wrap gap-2'>
-          {tags.map((tag) => (
+          {tags.map((tag: TagsProps) => (
             <p
               key={`${name}-${tag.name}`}
               className={`text-[14px] ${tag.color}`}
@@ -101,7 +116,7 @@ const Works = () => {
         </motion.p>
       </div>
       <div className='mt-20 flex flex-wrap gap-7'>
-        {projects.map((project, index) => (
+        {projects.map((project: ProjectCardProps, index) => (
           <ProjectCard key={`project-${index}`} index={index} isMobile={isMobile} {...project} />
         ))}
       </div>

@@ -1,4 +1,4 @@
-// import { HiX } from "react-icons/hi";
+import React from "react";
 import styles from "../styles";
 import { close } from '../assets';
 import { modalMessages } from "../constants";
@@ -12,7 +12,6 @@ const Modal = ({ isVisible, success, messageName, closeModal }) => {
                 ${success ? ' border-green-500 bg-[#658b73]' : 'border-rose-500 bg-[#f39fb0]'}
                 p-[20px] max-w-[500px] rounded-2xl shadow-card border-2`
             }>
-                {/* <img src="/icon-message-sent.svg" alt="icon message sent" style={{ height: "7rem", width: "auto" }} /> */}
                 <div className="text-center">
                     {success ? (
                         <>
@@ -47,12 +46,11 @@ const Modal = ({ isVisible, success, messageName, closeModal }) => {
                                             return <p key={`message-${j}`}>{m}</p>;
                                         })}
                                     </>
-                                ))}
+                                ))
+                            }
                         </>
                     )}
                 </div>
-
-
             </div>
         </div>
     )

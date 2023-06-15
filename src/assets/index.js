@@ -32,6 +32,10 @@ import weddingApp from "./projects/weddingApp.png";
 import everybuddyApp from "./projects/everybuddyApp.png";
 import korinySite from "./projects/korinySite.png";
 
+import githubIcon from "./footer/iconGithub.png";
+import linkedinIcon from "./footer/iconLinkedin.png";
+import messageIcon from "./footer/iconMessage.png";
+
 
 export {
   link,
@@ -63,5 +67,8 @@ export {
   invoiceSite,
   weddingApp,
   everybuddyApp,
-  korinySite
+  korinySite,
+  githubIcon,
+  linkedinIcon,
+  messageIcon
 };

@@ -12,7 +12,16 @@ import { experiences } from '../constants';
 import { SectionWrapper } from '../hoc';
 import { textVariant } from '../utils/motion';
 
-const ExperienceCard = ({ experience }) => {
+interface ExperienceCardProps {
+  title: string,
+  companyName: string,
+  icon: string,
+  iconBg: string,
+  date: string,
+  points: string[],
+}
+
+const ExperienceCard = ({experience}) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
@@ -26,7 +35,7 @@ const ExperienceCard = ({ experience }) => {
         <div className='flex justify-center items-center w-full h-full'>
           <img
             src={experience.icon}
-            alt={experience.company_name}
+            alt={experience.companyName}
             className='w-[60%] h-[60%] object-contain'
           />
         </div>
@@ -38,13 +47,13 @@ const ExperienceCard = ({ experience }) => {
           className='text-secondary text-[16px] font-semibold'
           style={{ margin: 0 }}
         >
-          {experience.company_name}
+          {experience.companyName}
         </p>
       </div>
 
       <ul className='mt-5 list-disc ml-5 space-y-2'>
         {experience.points.length > 1
-          ? experience.points.map((point, index) => (
+          ? experience.points.map((point: string, index: number) => (
             <li
               key={`experience-point-${index}`}
               className='text-white-100 text-[14px] pl-1 tracking-wider'
@@ -73,7 +82,7 @@ const Experience = () => {
 
       <div className='mt-20 flex flex-col'>
         <VerticalTimeline>
-          {experiences.map((experience, index) => (
+          {experiences.map((experience: ExperienceCardProps, index: number) => (
             <ExperienceCard
               key={`experience-${index}`}
               experience={experience}
