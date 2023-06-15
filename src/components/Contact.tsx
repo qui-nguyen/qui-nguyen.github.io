@@ -7,7 +7,7 @@ import { EarthCanvas } from './canvas';
 import { SectionWrapper } from '../hoc';
 import { slideIn } from '../utils/motion';
 import Modal from './Modal';
-// import Recaptcha from './Recaptcha';
+import Recaptcha from './Recaptcha';
 
 const Contact = () => {
   const formRef = useRef(HTMLFormElement);
@@ -22,14 +22,14 @@ const Contact = () => {
   const [messageName, setMessageName] = useState<string | null>(null);
 
 
-  // const [tokenRecaptcha, setTokenRecaptcha] = useState(null);
-  // const [resetRecaptcha, setResetRecaptcha] = useState(false);
+  const [tokenRecaptcha, setTokenRecaptcha] = useState(null);
+  const [resetRecaptcha, setResetRecaptcha] = useState(false);
 
-  // const handlerCheckRecaptcha = (token) => {
-  //   if (token) {
-  //     setTokenRecaptcha(token);
-  //   };
-  // };
+  const handlerCheckRecaptcha = (token) => {
+    if (token) {
+      setTokenRecaptcha(token);
+    };
+  };
 
   const handleChange = (e: any) => {
     const { target } = e;
@@ -43,7 +43,7 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (tokenRecaptcha) {
+    if (tokenRecaptcha) {
     setLoading(true);
 
     if (import.meta.env.VITE_APP_EMAILJS_SERVICE_ID && import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID && import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY) {
@@ -69,8 +69,8 @@ const Contact = () => {
               setSuccess(null);
             }, 3000);
 
-            // setResetRecaptcha(true);
-            // setTokenRecaptcha(null);
+            setResetRecaptcha(true);
+            setTokenRecaptcha(null);
 
             setForm({
               name: '',
@@ -93,11 +93,11 @@ const Contact = () => {
       setMessageName('error');
     }
   }
-  // else {
-  //   setSuccess(false);
-  //   setMessageName('recaptcha');
-  // }
-  // };
+  else {
+    setSuccess(false);
+    setMessageName('recaptcha');
+  }
+  };
 
   const closeModal = () => {
     setSuccess(null);
@@ -165,10 +165,10 @@ const Contact = () => {
             />
           </label>
 
-          {/* <Recaptcha
+          <Recaptcha
             reset={resetRecaptcha}
             handlerCheckRecaptcha={handlerCheckRecaptcha}
-          /> */}
+          />
 
           <button
             type='submit'
