@@ -35,6 +35,7 @@ import korinySite from "./projects/korinySite.png";
 import githubIcon from "./footer/iconGithub.png";
 import linkedinIcon from "./footer/iconLinkedin.png";
 import messageIcon from "./footer/iconMessage.png";
+import contactIcon from "./footer/iconContact.png";
 
 
 export {
@@ -70,5 +71,6 @@ export {
   korinySite,
   githubIcon,
   linkedinIcon,
-  messageIcon
+  messageIcon,
+  contactIcon
 };

@@ -189,7 +189,7 @@ const projects = [
     sourceCodeLink: "https://kodkodkod.studio/fr",
   },
   {
-    name: "Invoice Generator",
+    name: "Invoice Generator (en cours)",
     description:
       "Application permet de créer facilement des factures professionnelles et de les exporter au format PDF. Cette application propose des différents templates et offre des fonctionnalités telles que l'ajout d'articles avec calculs automatiques, et une interface utilisateur conviviale.",
     tags: [

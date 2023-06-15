@@ -95,7 +95,7 @@ const Works = () => {
         variants={textVariant(1)}
         animate={isMobile ? { opacity: 1 } : {}}
       >
-        <p className={styles.sectionSubText}>Mes projets</p>
+        <p className={styles.sectionSubText}>Voyage dans mes créations</p>
         <h2 className={styles.sectionHeadText}>Projets</h2>
       </motion.div>
 
