@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 import styles from "../styles";
-import { ComputersCanvas } from "./canvas";
+import { CoffeeCanvas } from "./canvas";
 import { expand } from "../assets";
 
 import { useMediaQuery } from "react-responsive";
@@ -29,7 +29,7 @@ const Hero = () => {
           </p>
         </div>
       </div>
-      <ComputersCanvas />
+      <CoffeeCanvas />
 
       {/* <div className='absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center'> */}
       <div className={`absolute w-full flex justify-center items-center ${isMobile ? 'bottom-[70px]' : 'bottom-2'} `}>

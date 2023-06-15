@@ -1,5 +1,5 @@
 import React from 'react';
-import Tilt from 'react-parallax-tilt';
+import {Tilt} from 'react-tilt';
 import { motion } from 'framer-motion';
 import styles from '../styles';
 import { services } from '../constants';
@@ -47,7 +47,7 @@ const About = () => {
       </motion.div>
 
       <motion.p
-        variants={fadeIn('', '', 0.1, 0.1)}
+        variants={fadeIn('', '', 0.1, 1)}
         className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
       >
         Je suis une développeuse Front-End Junior spécialisée en React, passionnée par la création d'interfaces utilisateur interactives et réactives. J'ai une solide compréhension de HTML, CSS et JavaScript, ainsi que dans la création de composants réutilisables avec React.
