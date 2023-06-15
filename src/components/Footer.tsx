@@ -29,8 +29,8 @@ const Footer = () => {
                 </div>
             </div>
             <div className="flex flex-col w-full items-center justify-center gap-[10px] py-3">
-                <p className="text-secondary m-0">© Qui Nguyen 2023</p>
-                <p className="text-secondary m-0"> Style inspiré par &nbsp;
+                <p className="text-secondary text-center m-0">© Qui Nguyen 2023</p>
+                <p className="text-secondary text-center m-0 text-xs"> Style inspiré par &nbsp;
                     <a href="https://github.com/qui-nguyen/portfolio-v1" target="_blank" className="underline hover:text-slate-400">Qui Nguyen Dev (v1)</a>
                     &nbsp;&&nbsp;
                     <a href="https://www.jsmastery.pro" target="_blank" className="underline hover:text-slate-400">JavaScript Mastery</a>
